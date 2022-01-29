@@ -127,7 +127,7 @@ func parsePath(path string, info *GitRepository, requireRepo bool) (*GitReposito
 		// We're assuming the beginning of the path is of the form /<org>/<repo> or /<org>/<subgroup>/.../<repo>
 		info.Organisation = arr[0]
 		info.Project = arr[0]
-		if strings.Contains(info.Host, "gitlab") {
+		if strings.Contains(info.Host, "gitlab") || strings.Contains(info.Host, "coding") {
 			info.Name = strings.Join(arr[1:], "/")
 		} else {
 			info.Name = arr[len(arr)-1]
