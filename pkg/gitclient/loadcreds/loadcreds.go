@@ -127,6 +127,7 @@ func LoadGitCredentialsFile(fileName string) ([]Credentials, bool, error) {
 			continue
 		}
 
+		line = strings.ReplaceAll(line, "%3a", ":")
 		u, err := url.Parse(line)
 		if err != nil {
 			log.Logger().Warnf("ignoring invalid line in git credentials file: %s error: %s", fileName, err.Error())
