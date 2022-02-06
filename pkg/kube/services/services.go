@@ -169,6 +169,11 @@ func IngressURL(ing *nv1.Ingress) string {
 		}
 	}
 	ann := ing.Annotations
+
+	if ann != nil && ann[ExposeURLAnnotation] != "" {
+		return ann[ExposeURLAnnotation]
+	}
+
 	hostname := rule.Host
 	if hostname == "" && ann != nil {
 		hostname = ann[kube.AnnotationHost]
